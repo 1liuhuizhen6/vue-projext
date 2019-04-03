@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+	<div id="warp">	
+       <my-header 
+       	 :todo="header" 
+       	 :todo-dom="headerDom"
+         v-on:hand-child ="handfather"
+       	>
+       </my-header>
+	</div>	
+	</body>
+	
+	<script type="text/javascript" src="js/vue.js" ></script>
+	<script>
+		Vue.component( "my-header",{
+			name:"my-header",
+		    data:function (){
+			     return{
+			     	header:"我是header",	
+			     	handfather:"想的都能实现",
+			     	message:"你是那么难学"
+			     }
+			   },
+		    props:{
+		    	todo:{
+		    		name:String,
+		    		default:"",
+		    	},
+		    	todoDom:{
+		    		name:Number,
+		    		default:""
+		    	}
+		    },
+			 // props:["todo"],
+			   template:` 
+			           <div class="my-header">
+			               <div class="my-header-left">
+			                  <a herf="#" @click="$emit('hand-child',handfather)">登陆</a>
+			                  <a herf="#">注册</a>
+			               </div>
+			                <div class="my-header-right">
+			                  <a herf="#">我的</a>
+			                  <a herf="#" @click = "$emit("handl-childer",handelfather)">查看</a>
+			                </div>
+			             <div class="my-header-props">
+			                   {{todo}} 
+			             </div>
+			            <div class="my-header-props">
+			                   {{todoDom}} 
+			            </div>
+			           </div>
+			          
+			        `,	             
+		});
+	
+		   var vm = new Vue({
+		 	el:"#warp",
+		 	data:function (){
+		 		 return{
+		 		    header:"我是header",	
+		 		    headerDom:123,
+		 		   
+		 		 }
+		 	},
+		 	methods:{
+		 		
+		 		handparent:function(data){
+		 			console.log(data,"data")
+		 			this.header=handfather
+		 			//console.
+		 		}
+		 		//this.aaa=hand
+		 		
+		 		
+		 		
+		 	},
+		    Comment:{
+		    	
+		    },
+		    //watch:数据监听器，是对象
+		    watch:{
+		    	header:function (oldValue,newValue){
+		    	console.log("oldValue","旧的","newValue","新的");	
+		    	}
+		    }
+		    
+		 })
+		 	
+	</script>
+</html>
